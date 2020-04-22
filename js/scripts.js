@@ -7,13 +7,14 @@ function go(){
   var cards = [];
   var sequence = ace.concat(numbers).concat(highCards);
   console.log(sequence);
-  suits.forEach(function(suit){
-    sequence.forEach(function(cardValue){
-      var string = cardValue + " of " + suit;
-      cards.push(string); 
-    });
-  })
-  return cards;
+  var cards =suits.reduce(function(accumulator,suitValue){
+   var OneSequence = sequence.reduce(function(accumulator, cardValue){
+      var string = [cardValue + " of " + suitValue];
+      return accumulator.concat(string); 
+    },[]);
+    return accumulator.concat(OneSequence);
+  },[])
+  return cards.flat();
 }
 
 
