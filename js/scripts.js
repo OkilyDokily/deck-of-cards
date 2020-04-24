@@ -2,18 +2,18 @@ var suits = ["clubs","diamonds","hearts","spades"];
 var highCards = ["jack", "queen", "king"]
 var ace = ["ace"];
 var numbers = Array.from(Array(11).keys()).slice(2);
-console.log(numbers)
+
 function go(){
   var cards = [];
   var sequence = ace.concat(numbers).concat(highCards);
-  console.log(sequence);
+
   var cards =suits.reduce(function(accumulator,suitValue){
    var OneSequence = sequence.reduce(function(accumulator, cardValue){
       var string = [cardValue + " of " + suitValue];
       return accumulator.concat(string); 
     },[]);
     return accumulator.concat(OneSequence);
-  },[])
+  },[]);
   return cards.flat();
 }
 
